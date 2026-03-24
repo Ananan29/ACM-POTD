@@ -1,0 +1,16 @@
+// 560. Subarray Sum Equals K
+
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        unordered_map<int,int> m;
+        int res=0,s=0;
+        for(int i:nums){
+            s+=i;
+            if(m.find(s-k)!=m.end())res+=m.find(s-k)->second;
+            m[s]++;
+            if(s==k)res++;
+        }
+        return res;
+    }
+};
